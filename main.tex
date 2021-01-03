@@ -18,12 +18,12 @@
 
 \clearpage
 \makepageheader
-\input{cover/cover}							% 封面
-\input{cover/copyright}						% 诚信说明
+\input{data/cover}							% 封面
+\input{data/copyright}						% 诚信说明
 
 \clearpage
 \setcounter{page}{1} 		% modified by Jon, 加入“\setcounter{page}{1}”，让摘要的起始页码为1。
-\input{abstract/abstract}					% 摘要
+\input{data/abstract}					% 摘要
 
 \clearpage
 
@@ -44,9 +44,9 @@
 \setlength{\abovecaptionskip}{2pt}
 \setlength{\belowcaptionskip}{2pt}
 % 内容比较多的时候，编译速度较慢，可以将不同章节放在不同文件中，注释掉其他章节，只编译正在写的章节，以提升编译速度
-\include{body/intros} 							% 绪论
-\include{body/body} 							% 其他章节
-\include{body/conclusion}
+\include{data/intros} 							% 绪论
+\include{data/body} 							% 其他章节
+\include{data/conclusion}
 %%%%%%%%%% 正文部分内容  %%%%%%%%%%
 
 %%%%%%%%%%  参考文献  %%%%%%%%%%
@@ -58,9 +58,9 @@
 \bibliographystyle{plain} 
 
 \bibliography{references}						% 参考文献
-\include{appendix/appendix}                   	% 附录
-\include{appendix/acknowledgements}				% 致谢
-\include{appendix/publications}					% 研究成果
+\include{data/appendix}                   	% 附录
+\include{data/acknowledgements}				% 致谢
+\include{data/publications}					% 研究成果
 \clearpage
 \end{CJK*}                                        % 结束中文字体使用
 \end{document}                                    % 结束全文
