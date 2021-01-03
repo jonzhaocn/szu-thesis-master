@@ -18,20 +18,18 @@
 * `main.tex`：论文主文件
 * `references.bib`：用于存放参考文献引用
 
-### 1.2 其他说明
-
-* 本人运行时，使用`texlive-2019`（编译环境）+`Texstudio`（编辑器）。
-
-* 目前使用`pdflatex`进行编译，无法配合`xeCJK`宏包使用，设置于`main.tex`的`% !TEX program = pdflatex`处。
-* GitHub上的深大本科毕业论文模板——[szuthesis](https://github.com/liuchengxu/szuthesis)
-
-### 1.3 免责声明
+### 1.2 免责声明
 
 * 此模板仅用于学习研究，不保证其准确性、有效性，请根据情况自行判断，本人对此不承担任何保证责任。
 * 本人对模板引发的问题概不负责，包括但不限于由模板错误引起的任何损失和损害。
 * 所有直接或间接使用、查看此模板的人均应该仔细阅读此声明。本人保留随时更改或补充此声明的权利。一旦您使用或复制了此模板，即视为您已接受此免责声明。
 
+### 1.3 其他说明
 
+* 本人运行时，使用`texlive-2019`（编译环境）+`Texstudio`（编辑器）。
+
+* 目前使用`pdflatex`进行编译，无法配合`xeCJK`宏包使用，设置于`main.tex`的`% !TEX program = pdflatex`处。
+* 在GitHub上看到的深大本科毕业论文模板——[szuthesis](https://github.com/liuchengxu/szuthesis)
 
 ## 2. 格式设置
 
