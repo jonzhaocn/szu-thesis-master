@@ -19,12 +19,12 @@
 \def\UDCnumber#1{\def\@UDCnumber{#1}}\def\@UDCnumber{}
 \def\classnumber#1{\def\@classnumber{#1}}\def\@classnumber{}
 
-\pdfbookmark[-1]{\@ctitle}{ctitle}
-
 % 定义makecover以生成封面
 \def\makecover{
 	
 	\clearpage
+	
+	\pdfbookmark[-1]{封面}{ctitle} % pdf文件的书签
 	
 	\begin{titlepage}
 		\begin{center}
@@ -39,7 +39,7 @@
 				\end{tabular}
 			}
 			
-			\vspace*{1cm}
+			\vspace*{3cm}
 			{\song\erhao \@cheading}
 			
 			\vspace*{1cm}
