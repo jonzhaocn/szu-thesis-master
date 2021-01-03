@@ -2,6 +2,12 @@
 % !TEX program = pdflatex
 \documentclass[a4paper,12pt,openany,twoside]{book}
 
+% 当目录多余1页时，使用\thispagestyle{empty}和\pagestyle{empty}，都无法完全清除目录的页眉页脚格式，需要使用到下面的\AtBeginDocument{}代码
+\AtBeginDocument{
+	\addtocontents{toc}{\protect\thispagestyle{empty}}%
+	\addtocontents{lof}{\protect\thispagestyle{empty}}%
+}
+
                                            % 如果论文超过60页 可以使用twoside 双面打印
 \input{setup/package}                      % 定义本文所使用宏包
 \graphicspath{{figures/}}                  % 定义所有的.eps文件在figures子目录下
