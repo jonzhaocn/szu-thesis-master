@@ -85,20 +85,21 @@
 
 #### 2.1.3 自定义页眉页脚格式
 
-自定义页眉页脚格式：
+自定义页眉页脚格式。
+
+使用fancy自定义新的格式——`englishAbstract`，作为英文摘要的页眉页脚格式：
 
 ```latex
-% 英文摘要页面
-% 使用fancy自定义新的格式——englishAbstract作为英文摘要的页眉
-\pagestyle{fancy}
+% `data/enabstract.tex`中
 \fancypagestyle{englishAbstract}{
     \fancyhead[C]{\wuhao \@etitle}
     \fancyfoot[C]{\song\wuhao ~\thepage~}
 }
-% 使用\thispagestyle{englishAbstract}进行应用。
 ```
 
-在`setup/format.tex`文件中存在以下代码，定义了默认的页眉页脚格式
+使用`\thispagestyle{englishAbstract}`将`englishAbstract`格式应用于当前页面；使用`\pagestyle{englishAbstract}`将`englishAbstract`格式应用于全局页面。
+
+在`setup/format.tex`文件中存在以下代码，定义了默认的页眉页脚格式——`plain`：
 
 ```latex
 \fancypagestyle{plain}{% 设置页页眉页脚的字体
@@ -176,7 +177,14 @@
 % 小四号字体对应12pt
 \makeatletter
 \renewcommand\normalsize{
-  \@setfontsize\normalsize{12pt}{11.5pt} % 第一个{}表示正文字体大小，第二个{}表示行距
+  \@setfontsize\normalsize{12pt}{12pt} % 第一个{}表示正文字体大小，第二个{}表示行距
+```
+
+设置行距
+
+```latex
+% 设置行距和段落间垂直距离
+\setlength{\baselineskip}{23pt}		% 行距为23pt
 ```
 
 #### 2.2.3 调整章节标题字体
