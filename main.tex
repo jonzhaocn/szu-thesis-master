@@ -25,14 +25,14 @@
 \clearpage
 
 % 目录
-\defaultfont
-\clearpage
 \renewcommand{\contentsname}{\erhao\song\bfseries\hspace*{\fill}目\quad 录\hspace*{\fill}}    % 设置“目录”二字的格式
 \tableofcontents                           % 中文目录
 \thispagestyle{empty}		% modified by Jon: 去掉页眉页脚
 \clearpage{\pagestyle{empty}\cleardoublepage}
 
 % 正文部分
+\defaultfont
+\pagestyle{plain}
 \mainmatter\defaultfont\sloppy\raggedbottom
 %\renewcommand{\ALC@linenosize}{\xiaosi}
 \renewcommand\arraystretch{1.5}
