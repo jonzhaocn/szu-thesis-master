@@ -1,0 +1,39 @@
+% !Mode:: "TeX:UTF-8"
+
+%%% 此处是中文摘要的格式设置，数据部分在下面 %%%
+
+\makeatletter
+
+\long\def\cabstract#1{\long\def\@cabstract{#1}}\long\def\@cabstract{}
+\def\ckeywords#1{\def\@ckeywords{#1}}\def\@ckeywords{}
+
+\clearpage
+\setcounter{page}{1} 		% 让摘要的起始页码为1。
+
+% 定义makecnabstract以生成中文摘要
+\def\makecnabstract{
+	
+	\clearpage
+	
+	%%%%%%%%%%%%%%%%%%%		中文摘要		%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{摘\quad 要}
+	\chapter*{\centering\erhao\song\bfseries\ 摘\qquad 要}		% 摘要标题，宋体加粗二号
+	\song\defaultfont
+	\@cabstract
+	\vspace{\baselineskip}
+	
+	%\hangafter=1\hangindent=52.3pt\noindent   %如果取消该行注释，关键词换行时将会自动缩进
+	\noindent
+	{\song\xiaosi 关键词： \@ckeywords}		% modified by Jon, 关键词，宋体小四
+	
+}
+\makeatother
+
+
+%%% 中文摘要数据部分 %%%
+
+\cabstract{中文摘要写在此处}
+\ckeywords{关键字1;~~关键字2;~~关键字3}
+
+% 使用makecnabstract生成中文摘要
+\makecnabstract
