@@ -1,0 +1,306 @@
+% !Mode:: "TeX:UTF-8"
+%  Authors: 杜家宜   Jiayi Du: Max_dujiayi@gmail.com     湖南大学2010级计算机科学与技术专业博士生
+
+%%%%%%%%%% Fonts Definition and Basics %%%%%%%%%%%%%%%%%
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\newcommand{\li}{\CJKfamily{li}}        % 隶书
+\newcommand{\yihao}{\fontsize{26pt}{26pt}\selectfont}       % 一号, 1.倍行距
+\newcommand{\xiaoyi}{\fontsize{24pt}{24pt}\selectfont}      % 小一, 1.倍行距
+\newcommand{\erhao}{\fontsize{22pt}{22pt}\selectfont}       % 二号, 1.倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}      % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{16pt}\selectfont}      % 三号, 1.倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{15pt}\selectfont}     % 小三, 1.倍行距
+\newcommand{\sihao}{\fontsize{14pt}{14pt}\selectfont}       % 四号, 1.0倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{12pt}\selectfont}  	% 小四, 1.倍行距 	modified by Jon, 小四对应12pt
+\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}   % 五号, 单倍行距
+\newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}        % 小五, 单倍行距
+\setlength{\headheight}{20pt}
+%\CJKcaption{gb_452}
+\CJKtilde  % 重新定义了波浪符~的意义
+\newcommand\prechaptername{第}
+\newcommand\postchaptername{章}
+
+% 调整罗列环境的布局 % Modified by Li Jianmin
+\setitemize{leftmargin=0em,itemindent=3em,itemsep=0em,partopsep=0em,parsep=0em,topsep=-0em}
+\setenumerate{leftmargin=0em,itemindent=3em,itemsep=0em,partopsep=0em,parsep=0em,topsep=0em}
+
+%避免宏包 hyperref 和 arydshln 不兼容带来的目录链接失效的问题。
+\def\temp{\relax}
+\let\temp\addcontentsline
+\gdef\addcontentsline{\phantomsection\temp}
+
+% 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
+\newcounter{pubctr} % 自定义新计数器
+\newenvironment{publist}{%%%%% 定义新环境
+\begin{list}{[\arabic{pubctr}]} %% 标签格式
+    {
+     \usecounter{pubctr}
+     \setlength{\leftmargin}{2em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
+     \setlength{\itemindent}{0em}     % 标号缩进量
+     \setlength{\labelsep}{1em}       % 标号和列表项之间的距离,默认0.5em
+     \setlength{\rightmargin}{0em}    % 右边界
+     \setlength{\topsep}{0ex}         % 列表到上下文的垂直距离
+     \setlength{\parsep}{0ex}         % 段落间距
+     \setlength{\itemsep}{0ex}        % 标签间距
+     \setlength{\listparindent}{0pt} % 段落缩进量
+    }}
+{\end{list}}%%%%%
+
+% modified by Jon，此处用于设置正文字体
+\makeatletter
+\renewcommand\normalsize{
+  \@setfontsize\normalsize{12pt}{11.5pt} 	% modified by Jon, 正文使用小四号(12pt)字体
+  \setlength\abovedisplayskip{4pt}
+  \setlength\abovedisplayshortskip{4pt}
+  \setlength\belowdisplayskip{\abovedisplayskip}
+  \setlength\belowdisplayshortskip{\abovedisplayshortskip}
+    \let\@listi\@listI}
+\def\defaultfont{\renewcommand{\baselinestretch}{1.65}\normalsize\selectfont}
+
+
+% 设置行距和段落间垂直距离
+
+\setlength{\baselineskip}{20pt}
+\renewcommand{\CJKglue}{\hskip 0.5pt plus \baselineskip} %加大字间距，使每行35个字
+
+
+\makeatother
+
+% modified by Jon, 对目录的显示格式进行调整，目录中的项需要使用 宋体4号
+%%%%%%%%%%%%% Contents %%%%%%%%%%%%%%%%%
+\renewcommand{\contentsname}{目\quad录}
+\setcounter{tocdepth}{2}
+\titlecontents{chapter}[0em]{\sihao\song}%
+             {\prechaptername~~\thecontentslabel~~\postchaptername~~~}{} %
+             {\titlerule*[5pt]{$\cdot$}\sihao\contentspage}
+\titlecontents{section}[2.5em]{\sihao\song} %
+            {\thecontentslabel\quad}{} %
+            {\hspace{.25em}\titlerule*[5pt]{$\cdot$}\sihao\contentspage}
+\titlecontents{subsection}[3.25em]{\sihao\song} %
+            {\thecontentslabel\quad}{} %
+            {\hspace{.25em}\titlerule*[5pt]{$\cdot$}\sihao\contentspage}
+\renewcommand{\cftdotsep}{1.1}
+\renewcommand{\listfigurename}{插图索引}
+\setcounter{lofdepth}{1}
+%\titlefigures{chapter}[1em]{\xiaosi\hei}%
+%             {\prechaptername~~\thecontentslabel~~\postchaptername~~~}{} %
+%            {\titlerule*[5pt]{$\cdot$}\xiaosi\contentspage}
+\renewcommand{\listtablename}{附表索引}
+
+
+%%删除表格和插图因章不同中的空行%%%
+\makeatletter
+\def\@chapter[#1]#2
+{\ifnum \c@secnumdepth >\m@ne
+	\if@mainmatter
+	\refstepcounter{chapter}%
+	\typeout{\@chapapp\space\thechapter.}%
+	\addcontentsline{toc}{chapter}%
+	{\protect\numberline{\thechapter}#1}%
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	\chaptermark{#1}%
+	\if@twocolumn
+	\@topnewpage[\@makechapterhead{#2}]%
+	\else
+	\@makechapterhead{#2}%
+	\@afterheading
+	\fi}
+\makeatother
+
+
+%%%%%%%%%% Chapter and Section %%%%%%%%%%%%%%%%%
+\setcounter{secnumdepth}{4}
+\setlength{\parindent}{2em}
+\renewcommand{\chaptername}{\prechaptername\arabic{chapter}\postchaptername}
+% modified by Jon，对章节标题的字体进行调整
+\titleformat{\chapter}{\centering\xiaosan\hei}{\chaptername}{1em}{}		% 一级标题（章）：小三号黑体
+\titlespacing{\chapter}{0pt}{0pt}{18pt}
+\titleformat{\section}{\sihao\song\bfseries}{\thesection}{1em}{}		% 二级标题（节）：四号宋体（加粗），\bfseries表示加粗
+\titlespacing{\section}{0pt}{12pt}{12pt}
+\titleformat{\subsection}{\xiaosi\song\bfseries}{\thesubsection}{0.5em}{}   % 三级标题（节内小节）：小四号宋体（加粗） 
+\titlespacing{\subsection}{0pt}{6pt}{6pt}
+\titleformat{\subsubsection}{\xiaosi\song}{\thesubsubsection}{0.5em}{}
+\titlespacing{\subsubsection}{0pt}{6pt}{6pt}
+
+%%%%%%%%%% Table, Figure and Equation %%%%%%%%%%%%%%%%%
+\renewcommand{\tablename}{表} % 插表题头
+\renewcommand{\figurename}{图} % 插图题头
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}} % 使图编号为 7.1 的格式 %\protect{~}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}%使公式编号为 7.1 的格式
+\renewcommand{\thesubfigure}{\alph{subfigure})}%使子图编号为a)的格式
+\renewcommand{\thesubtable}{(\alph{subtable})} %使子表编号为a)的格式
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7.1 a) 的格式，母图编号和子图编号之间用~ 加一个空格
+\makeatother
+
+
+%% 定制浮动图形和表格标题样式
+\makeatletter
+\long\def\@makecaption#1#2{%
+   \vskip\abovecaptionskip
+   \sbox\@tempboxa{\centering\wuhao\song{#1~~#2} }%
+   \ifdim \wd\@tempboxa >\hsize
+     \centering\wuhao\song{#1~~#2} \par
+   \else
+     \global \@minipagefalse
+     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+   \fi
+   \vskip\belowcaptionskip}
+\makeatother
+\captiondelim{~~~~} %用来控制longtable表头分隔符
+
+%%%%%%%%%% Theorem Environment %%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\theorembodyfont{\xiaosi\song}%\rmfamily}
+\theoremheaderfont{\xiaosi\hei}%\rmfamily}
+\setlength{\theorempreskipamount}{0em} %调整定理环境与上文的距离
+\setlength{\theorempostskipamount}{0em} %调整定理环境与下文的距离
+\newtheorem{theorem}{定理~}[chapter]
+\newtheorem{lemma}{引理~}[chapter]
+\newtheorem{axiom}{公理~}[chapter]
+\newtheorem{proposition}{命题~}[chapter]
+\newtheorem{corollary}{推论~}[chapter]
+\newtheorem{definition}{\hskip 2em 定义~}[chapter]
+\newtheorem{conjecture}{猜想~}[chapter]
+\newtheorem{example}{例~}[chapter]
+\newtheorem{remark}{注~}[chapter]
+\floatname{algorithm}{算法}% 将英文的algorithm改为算法
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}%表格合并
+\newenvironment{proof}{\noindent{\hei 证明：}}{\hfill $ \square $ \vskip 4mm}
+\theoremsymbol{$\square$}
+
+%%%%%%%%%% Page: number, header and footer  页码%%%%%%%%%%%%%%%%%
+
+%\frontmatter 或 \pagenumbering{roman}
+%\mainmatter 或 \pagenumbering{arabic}
+\makeatletter
+\renewcommand\frontmatter{\clearpage
+  \@mainmatterfalse
+  \pagenumbering{Roman}} % 正文前罗马字体编号
+\makeatother
+
+% 参考文献样式
+%%%%%%%%%% References %%%%%%%%%%%%%%%%%
+\renewcommand{\bibname}{参\quad 考\quad 文\quad 献}
+\makeatletter
+\renewenvironment{thebibliography}[1]{%
+   \chapter*{\centering\xiaosan\hei\bfseries \bibname}  % modified by Jon, 标题小三黑体加粗
+   \wuhao		% modified by Jon, 参考文献引用使用5号字体
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\renewcommand{\makelabel}[1]{##1\hfill}
+         \setlength{\baselineskip}{21pt}
+         \settowidth\labelwidth{0.5cm}
+         \setlength{\labelsep}{0pt}
+         \setlength{\itemindent}{0pt}
+         \setlength{\leftmargin}{\labelwidth+\labelsep}
+         \addtolength{\itemsep}{-0.7em}
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy\frenchspacing
+    \clubpenalty4000%
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \interlinepenalty4000%
+    \sfcode`\.\@m}
+   {\def\@noitemerr
+     {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist\frenchspacing}
+\makeatother
+
+\addtolength{\bibsep}{5pt} % 增加参考文献间的垂直间距
+\setlength{\bibhang}{2em} %每个条目自第二行起缩进的距离
+
+% 参考文献引用作为上标出现
+\newcommand{\mycite}[1]{\scalebox{1.3}[1.3]{\raisebox{-0.65ex}{\cite{#1}}}}
+%\newcommand{\citenormal}[1]{\cite{#1}}
+%\makeatletter
+%   \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+%\makeatother
+
+%% 引用格式
+\bibpunct{[}{]}{,}{s}{}{,}
+
+%%%%%%%%%% Cover %%%%%%%%%%%%%%%%%
+% 封面、摘要、版权、致谢格式定义
+\makeatletter
+
+\def\dtitle#1{\def\@dtitle{#1}}\def\@dtitle{}
+\def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
+\def\etitle#1{\def\@etitle{#1}}\def\@etitle{}
+\def\csubject#1{\def\@csubject{#1}}\def\@csubject{}
+\def\cauthor#1{\def\@cauthor{#1}}\def\@cauthor{}
+\def\csupervisor#1{\def\@csupervisor{#1}}\def\@csupervisor{}
+\def\cdate#1{\def\@cdate{#1}}\def\@cdate{}
+\def\declaretitle#1{\def\@declaretitle{#1}}\def\@declaretitle{}
+\def\declarecontent#1{\def\@declarecontent{#1}}\def\@declarecontent{}
+\def\authorizationtitle#1{\def\@authorizationtitle{#1}}\def\@authorizationtitle{}
+\def\authorizationcontent#1{\def\@authorizationcontent{#1}}\def\@authorizationconent{}
+\def\authorizationadd#1{\def\@authorizationadd{#1}}\def\@authorizationadd{}
+\def\authorsigncap#1{\def\@authorsigncap{#1}}\def\@authorsigncap{}
+\def\supervisorsigncap#1{\def\@supervisorsigncap{#1}}\def\@supervisorsigncap{}
+\def\signdatecap#1{\def\@signdatecap{#1}}\def\@signdatecap{}
+\long\def\cabstract#1{\long\def\@cabstract{#1}}\long\def\@cabstract{}
+\long\def\eabstract#1{\long\def\@eabstract{#1}}\long\def\@eabstract{}
+\def\ckeywords#1{\def\@ckeywords{#1}}\def\@ckeywords{}
+\def\ekeywords#1{\def\@ekeywords{#1}}\def\@ekeywords{}
+\def\cheading#1{\def\@cheading{#1}}\def\@cheading{}
+\def\cnumber#1{\def\@cnumber{#1}}\def\@cnumber{}
+\def\csecret#1{\def\@csecret{#1}}\def\@csecret{}
+\def\cschoolnumer#1{\def\@cschoolnumer{#1}}\def\@cschoolnumer{}
+\def\ccollegename#1{\def\@ccollegename{#1}}\def\@ccollegename{}
+\def\UDCnumber#1{\def\@UDCnumber{#1}}\def\@UDCnumber{}
+\def\cclassnumber#1{\def\@cclassnumber{#1}}\def\@cclassnumber{}
+\def\cchair#1{\def\@cchair{#1}}\def\@cchair{}
+\def\ddate#1{\def\@ddate{#1}}\def\@ddate{}
+
+%英文内封
+\def\ename#1{\def\@ename{#1}}\def\@ename{}
+\def\cbe#1{\def\@cbe{#1}}\def\@cbe{}
+\def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
+\def\cclass#1{\def\@cclass{#1}}\def\@cclass{}
+
+
+\newlength{\@title@width}
+\def\@put@covertitle#1{\makebox[\@title@width][s]{#1}}
+% 定义封面
+\def\makepageheader{
+
+	%%%%%%%%%%%%%%%%%%%   Abstract and Keywords  %%%%%%%%%%%%%%%%%%%%%%%
+	\clearpage
+	
+	\pagestyle{fancy}
+	  \fancyhf{}
+	\fancyhead[CO]{\song\xiaowu \@cheading}
+	\fancyhead[CE]{\song\xiaowu \@ctitle}
+	\fancyfoot[C]{\song\xiaowu ~\thepage~} 
+	
+	%%%%%%%%%%%%%%%%%%% 设置页眉的样式 %%%%%%%%%%%%%%%%%%%
+	
+	\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+	\hrule\@height 0.5pt \@width\headwidth\vskip1pt %线条粗0.5pt
+	}
+	\vspace{7mm}
+	}     %双线与下面正文之间的垂直间距
+	
+	\fancypagestyle{plain}{% 设置页页眉页脚的字体
+	    \fancyhf{}%
+	\fancyhead[CO]{\song\wuhao \@ctitle}		% modify by Jon: 奇数页的页眉标题也使用@ctitle
+	\fancyhead[CE]{\song\wuhao \@ctitle}
+	\fancyfoot[C]{\song\wuhao ~\thepage~} %首页页脚格式
+	}
+
+}
+\clearpage
+\makeatother

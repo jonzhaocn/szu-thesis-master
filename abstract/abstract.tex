@@ -1,0 +1,52 @@
+% !Mode:: "TeX:UTF-8"
+
+\cabstract{中文摘要写在此处}
+
+\ckeywords{关键字1;~~关键字2;~~关键字3}
+
+\eabstract{英文摘要写在此处}
+
+\ekeywords{keyworkds1;~~keyworkds2;~~keyworkds3}
+
+\makeatletter
+
+\def\makeabstract{
+	
+	\clearpage
+	
+	%%%%%%%%%%%%%%%%%%%		中文摘要		%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{摘\quad 要}
+	\chapter*{\centering\erhao\song\bfseries\ 摘\qquad 要}		% modified by Jon, 摘要标题，宋体加粗二号
+	\song\defaultfont
+	\@cabstract
+	\vspace{\baselineskip}
+	
+	%\hangafter=1\hangindent=52.3pt\noindent   %如果取消该行注释，关键词换行时将会自动缩进
+	\noindent
+	{\song\xiaosi 关键词： \@ckeywords}		% modified by Jon, 关键词，宋体小四
+	
+	
+	%%%%%%%%%%%%%%%%%%%   English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\clearpage
+	
+	% modified by Jon: 使用fancy来设置页眉页脚，自定义了新的格式——englishAbstract
+	\pagestyle{fancy}
+	\fancypagestyle{englishAbstract}{
+		\fancyhead[C]{\wuhao \@etitle}		% 使用英文论文名称作为页眉
+		\fancyfoot[C]{\song\wuhao ~\thepage~}
+	}
+	
+	\addcontentsline{toc}{chapter}{Abstract}
+	\chapter*{\centering\erhao \bf{Abstract}}		% modified by Jon, Abstract 二号
+	%\vspace{\baselineskip}
+	\@eabstract
+	\thispagestyle{englishAbstract}		% modified by Jon: 应用englishAbstract
+	\vspace{\baselineskip}
+	
+	%\hangafter=1\hangindent=60pt\noindent  %如果取消该行注释，KEY WORDS换行时将会自动缩进
+	\noindent
+	{\xiaosi\textbf{Key Words:} \@ekeywords}
+	
+}
+\makeatother
+\makeabstract

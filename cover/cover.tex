@@ -1,0 +1,77 @@
+% !Mode:: "TeX:UTF-8"
+
+\cclassnumber{TP37}
+\cschoolnumer{10590}
+\UDCnumber{UDCnumber}
+\csecret{公开}
+
+\cheading{深圳大学硕士学位论文}
+\dtitle{论文名称} %封面用论文标题，自己可手动断行
+\ctitle{中文页眉标题}  %页眉标题无需断行
+\etitle{英文页眉标题}
+\cdegree{学位类别}
+\ccollegename{计算机科学与软件学院} %学院名称
+\csubject{计算机科学与技术}   %专业
+\cauthor{张~~三}   %学生姓名
+\csupervisor{李四教授} %导师姓名
+\cchair{~~~~~~~~}
+\ddate{~~~~~~~~年~~~~月~~~~日}
+
+%\cleardoublepage%
+\phantomsection
+\makeatletter
+\pdfbookmark[-1]{\@ctitle}{ctitle}
+
+\def\makecover{
+	
+	\clearpage
+	
+	\begin{titlepage}
+		\begin{center}
+			
+			\setlength{\@title@width}{3.5cm}
+			{
+				\begin{tabular}{lcclc}
+					\xiaosi\hei{分类号}&  \underline{\makebox[\@title@width][c]{\@cclassnumber}}&\qquad \qquad \qquad \qquad \qquad & 
+					\xiaosi\hei{学校代码}&  \underline{\makebox[\@title@width][c]{\@cschoolnumer}}\\
+					\xiaosi\hei{U~~D~~C}& \underline{\makebox[\@title@width][c]{\@UDCnumber}}&\qquad \qquad \qquad \qquad \qquad & 
+					\xiaosi\hei{密~~~~~~级}&  \underline{\makebox[\@title@width][c]{\@csecret}} \\
+				\end{tabular}
+			}
+			
+			\vspace*{1cm}
+			{\song\erhao \@cheading}
+			
+			\vspace*{1cm}
+			
+			\begin{center}
+				\begin{spacing}{1.5}
+					\hei\sanhao \@dtitle%标题可以使用断字
+				\end{spacing}
+			\end{center}
+			
+			\begin{center}
+				\begin{spacing}{1.5}
+					\song\sanhao \@cauthor%标题可以使用断字
+				\end{spacing}
+			\end{center}
+			
+			%\makebox[宽度][位置]{文本}中可指定盒子宽度，文本在盒子中的位置（l：左端；r：右端；s：两端，默认是居中）
+			\vspace{\baselineskip}
+			\setlength{\@title@width}{6.5cm}
+			{
+				\begin{spacing}{3  }
+					\makebox[3.3cm][s]{\sanhao\song{学~~~~位~~~~类~~~~别}} \sanhao\song\underline{\makebox[\@title@width]{\@cdegree}} \\
+					\makebox[3.3cm][s]{\sanhao\song{专~~~~业~~~~名~~~~称}} \sanhao\song\underline{\makebox[\@title@width]{\@csubject}} \\
+					\makebox[3.3cm][s]{\sanhao\song{学院（系、所）}} \sanhao\song\underline{\makebox[\@title@width]{\@ccollegename}} \\
+					\makebox[3.3cm][s]{\sanhao\song{指导老师}} \sanhao\song\underline{\makebox[\@title@width]{\@csupervisor}} \\
+				\end{spacing}
+			}
+		\end{center}
+		
+		\clearpage
+		
+	\end{titlepage}	
+}
+\makeatother
+\makecover

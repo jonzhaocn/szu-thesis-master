@@ -1,0 +1,21 @@
+% !Mode:: "TeX:UTF-8"
+
+\newenvironment{theappendix}{\wuhao\song}
+
+\addcontentsline{toc}{chapter}{附录}%添加到目录中
+\chapter*{\centering\xiaosan\hei\bfseries 附\quad 录}
+
+\begin{theappendix}
+
+\setlength{\parindent}{0em}
+% 没有引用参考文献时，会出现“perhaps a missing \item. \begin{publist}”的错误
+\begin{publist}
+	\item	xxx
+\end{publist}
+
+\vfill
+\hangafter=1\hangindent=2em\noindent
+\setlength{\parindent}{2em}
+
+\end{theappendix}
+

@@ -1,0 +1,66 @@
+%%%%%%%%%% !TEX program = pdflatex %%%%%%%%%%
+% !TEX program = pdflatex
+% !Mode:: "TeX:UTF-8"
+% \def\usewhat{dvipdfmx}                            % 定义编译方式 dvipdfmx 或者 pdflatex ，默认为 dvipdfmx
+													% 方式编译，如果需要修改，只需改变花括号中的内容即可。
+%\setlength{\baselineskip}{20pt}
+%\setlength{\headheight}{25pt}
+\documentclass[a4paper,12pt,openany,twoside]{book}
+
+                                           % 如果论文超过60页 可以使用twoside 双面打印
+\input{setup/package}                      % 定义本文所使用宏包
+\graphicspath{{figures/}}                  % 定义所有的.eps文件在figures子目录下
+\begin{document}                           % 开始全文
+\begin{CJK*}{UTF8}{song}                   % 开始中文字体使用
+\input{setup/format}                       % 完成对论文各个部分格式的设置
+
+\frontmatter                               % 以下是论文导言部分，包括论文的封面，中英文摘要和中文目录
+
+\clearpage
+\makepageheader
+\input{cover/cover}							% 封面
+\input{cover/copyright}						% 诚信说明
+
+\clearpage
+\setcounter{page}{1} 		% modified by Jon, 加入“\setcounter{page}{1}”，让摘要的起始页码为1。
+\input{abstract/abstract}					% 摘要
+
+\clearpage
+
+%%%%%%%%%%   目录   %%%%%%%%%%
+\defaultfont
+\clearpage
+%\addcontentsline{toc}{chapter}{目~~~~录}		%  modified by Jon: 注释该行，不要把“目录”加入目录中
+\renewcommand{\contentsname}{\erhao\song\bfseries\hspace*{\fill}目\quad 录\hspace*{\fill}}
+\tableofcontents                           % 中文目录
+\thispagestyle{empty}		% modified by Jon: 去掉页眉页脚
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%%%%%%%%% 正文部分内容  %%%%%%%%%%
+\mainmatter\defaultfont\sloppy\raggedbottom
+%\renewcommand{\ALC@linenosize}{\xiaosi}
+\renewcommand\arraystretch{1.5}
+\setlength{\intextsep}{2pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+% 内容比较多的时候，编译速度较慢，可以将不同章节放在不同文件中，注释掉其他章节，只编译正在写的章节，以提升编译速度
+\include{body/intros} 							% 绪论
+\include{body/body} 							% 其他章节
+\include{body/conclusion}
+%%%%%%%%%% 正文部分内容  %%%%%%%%%%
+
+%%%%%%%%%%  参考文献  %%%%%%%%%%
+\defaultfont
+\bibliographystyle{HNUThesis}
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}          % 参考文献加入到中文目录
+%\nocite{*}                                        % 若将此命令屏蔽掉，则未引用的文献不会出现在文后的参考文献中。
+\bibliographystyle{plain} 
+
+\bibliography{references}						% 参考文献
+\include{appendix/appendix}                   	% 附录
+\include{appendix/acknowledgements}				% 致谢
+\include{appendix/publications}					% 研究成果
+\clearpage
+\end{CJK*}                                        % 结束中文字体使用
+\end{document}                                    % 结束全文
