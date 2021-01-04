@@ -56,6 +56,7 @@
 * `clean.bat`与`clean.sh`：用于清除临时或辅助文件
 * `main.tex`：论文主`tex`文件
 * `references.bib`：用于存放参考文献
+* `my-texcount.sh`：用于统计正文的字数
 
 
 

@@ -82,11 +82,7 @@
 \renewcommand{\cftdotsep}{1.1}
 \renewcommand{\listfigurename}{插图索引}
 \setcounter{lofdepth}{1}
-%\titlefigures{chapter}[1em]{\xiaosi\hei}%
-%             {\prechaptername~~\thecontentslabel~~\postchaptername~~~}{} %
-%            {\titlerule*[5pt]{$\cdot$}\xiaosi\contentspage}
 \renewcommand{\listtablename}{附表索引}
-
 
 
 %%删除表格和插图因章不同中的空行%%%
@@ -251,8 +247,8 @@
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
 		\hrule\@height 0.5pt \@width\headwidth\vskip1pt %线条粗0.5pt
 	}
-	\vspace{7mm} %双线与下面正文之间的垂直间距
-}     
+	\vspace{0mm} %双线与下面正文之间的垂直间距
+}
 
 \fancypagestyle{plain}{% 设置页页眉页脚的字体
 	\fancyhf{}%
