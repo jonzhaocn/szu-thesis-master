@@ -1,42 +1,6 @@
 % !Mode:: "TeX:UTF-8"
 
-%%% 此处是英文摘要的格式设置，数据部分在下面 %%%
-\makeatletter
-
-\long\def\enabstract#1{\long\def\@enabstract{#1}}\long\def\@enabstract{}
-\def\enkeywords#1{\def\@enkeywords{#1}}\def\@enkeywords{}
-\def\enpageheader#1{\def\@enpageheader{#1}}\def\@enpageheader{}
-
-% 使用fancy来设置页眉页脚，自定义了新的格式——englishAbstract
-\fancypagestyle{englishAbstract}{
-	\fancyhead[C]{\wuhao \@enpageheader}		% 使用英文论文名称作为页眉
-	\fancyfoot[C]{\song\wuhao ~\thepage~}
-}
-
-% 定义makeenabstract以生成英文摘要
-\def\makeenabstract{
-	
-	\clearpage
-	\pagestyle{englishAbstract}{}					% 应用englishAbstract
-	\addcontentsline{toc}{chapter}{Abstract}
-	\chapter*{\centering\erhao \bf{Abstract}}		% 标题，二号
-	\thispagestyle{englishAbstract}{}				% 应用englishAbstract
-	\vspace{\baselineskip} 							% 空两行
-	\vspace{\baselineskip}
-	
-	\@enabstract									% 英文摘要正文
-	\vspace{\baselineskip}
-	
-	%\hangafter=1\hangindent=60pt\noindent  %如果取消该行注释，KEY WORDS换行时将会自动缩进
-	\noindent
-	{\xiaosi\textbf{Key Words:} \@enkeywords}		% 英文关键字
-	
-	\clearpage
-}
-\makeatother
-
-
-%%% 英文摘要数据部分 %%%
+%%% 英文摘要填写部分 %%%
 
 \enabstract{
 

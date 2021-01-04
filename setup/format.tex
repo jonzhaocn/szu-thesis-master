@@ -266,3 +266,213 @@
 
 \clearpage
 \makeatother
+
+
+%%% 此处是论文封面格式的定义，数据部分在cover.tex %%%
+
+\phantomsection
+\makeatletter
+
+\def\thesisTitle#1{\def\@thesisTitle{#1}}\def\@thesisTitle{}
+\def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
+\def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
+\def\majorName#1{\def\@majorName{#1}}\def\@majorName{}
+\def\authorName#1{\def\@authorName{#1}}\def\@authorName{}
+\def\supervisor#1{\def\@supervisor{#1}}\def\@supervisor{}
+
+\def\cheading#1{\def\@cheading{#1}}\def\@cheading{}
+\def\security#1{\def\@security{#1}}\def\@security{}
+\def\schoolcode#1{\def\@schoolcode{#1}}\def\@schoolcode{}
+\def\college#1{\def\@college{#1}}\def\@college{}
+\def\UDCnumber#1{\def\@UDCnumber{#1}}\def\@UDCnumber{}
+\def\classnumber#1{\def\@classnumber{#1}}\def\@classnumber{}
+
+% 定义makecover以生成封面
+\def\makecover{
+	
+	\clearpage
+	
+	\pdfbookmark[-1]{封面}{ctitle} % pdf文件的书签
+	
+	\begin{titlepage}
+		\begin{center}
+			
+			\setlength{\@title@width}{3.5cm}
+			{
+				\begin{tabular}{lcclc}
+					\xiaosi\hei{分类号}&  \underline{\makebox[\@title@width][c]{\@classnumber}}&\qquad \qquad \qquad \qquad \qquad & 
+					\xiaosi\hei{学校代码}&  \underline{\makebox[\@title@width][c]{\@schoolcode}}\\
+					\xiaosi\hei{U~~D~~C}& \underline{\makebox[\@title@width][c]{\@UDCnumber}}&\qquad \qquad \qquad \qquad \qquad & 
+					\xiaosi\hei{密~~~~~~级}&  \underline{\makebox[\@title@width][c]{\@security}} \\
+				\end{tabular}
+			}
+			
+			\vspace*{3cm}
+			{\song\erhao \@cheading}
+			
+			\vspace*{1cm}
+			
+			\begin{center}
+				\begin{spacing}{1.5}
+					\hei\sanhao \@thesisTitle%标题可以使用断字
+				\end{spacing}
+			\end{center}
+			
+			\begin{center}
+				\begin{spacing}{1.5}
+					\song\sanhao \@authorName%标题可以使用断字
+				\end{spacing}
+			\end{center}
+			
+			%\makebox[宽度][位置]{文本}中可指定盒子宽度，文本在盒子中的位置（l：左端；r：右端；s：两端，默认是居中）
+			\vspace{\baselineskip}
+			\setlength{\@title@width}{6.5cm}
+			{
+				\begin{spacing}{3}
+					\makebox[3.3cm][s]{\sanhao\song{学~~~~位~~~~类~~~~别}} \sanhao\song\underline{\makebox[\@title@width]{\@cdegree}} \\
+					\makebox[3.3cm][s]{\sanhao\song{专~~~~业~~~~名~~~~称}} \sanhao\song\underline{\makebox[\@title@width]{\@majorName}} \\
+					\makebox[3.3cm][s]{\sanhao\song{学院（系、所）}} \sanhao\song\underline{\makebox[\@title@width]{\@college}} \\
+					\makebox[3.3cm][s]{\sanhao\song{指导老师}} \sanhao\song\underline{\makebox[\@title@width]{\@supervisor}} \\
+				\end{spacing}
+			}
+		\end{center}
+		
+	\end{titlepage}	
+	
+	\clearpage
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% 此处是原创性声明的格式定义，数据部分在copyright.tex %%%
+
+\makeatletter
+
+\def\declaretitle#1{\def\@declaretitle{#1}}\def\@declaretitle{}
+\def\declarecontent#1{\def\@declarecontent{#1}}\def\@declarecontent{}
+\def\authorizationtitle#1{\def\@authorizationtitle{#1}}\def\@authorizationtitle{}
+\def\authorizationcontent#1{\def\@authorizationcontent{#1}}\def\@authorizationconent{}
+\def\authorizationadd#1{\def\@authorizationadd{#1}}\def\@authorizationadd{}
+\def\authorsigncap#1{\def\@authorsigncap{#1}}\def\@authorsigncap{}
+\def\supervisorsigncap#1{\def\@supervisorsigncap{#1}}\def\@supervisorsigncap{}
+\def\signdatecap#1{\def\@signdatecap{#1}}\def\@signdatecap{}
+
+% 定义makecopyright以生成原创性说明
+\def\makecopyright{
+	
+	\clearpage
+	
+	% 如果需要上传稿包含版权页，取消这部分内容注释
+	%\includepdf{data/Copyright.pdf}
+	
+	
+	% 下面为原创性声明页面的格式设置，如果引入pdf文件作为原创性声明，则将此部分代码注释掉
+	\pagestyle{fancy}
+	\fancyhf{}
+	\fancyfoot[C]{\song\xiaowu ~\thepage~}
+	\renewcommand{\headrulewidth}{0pt}
+	\chapter*{\song\sanhao 深圳大学学位论文原创性声明和使用授权说明}{		% modified by Jon, 原创性说明无需加入目录，使用chapter*
+		\thispagestyle{empty} 		% modified by Jon: 原创性说明不需要页码
+		\qquad\\
+		\begin{center}\hei\xiaoer{\@declaretitle}\end{center}\par
+		\song\defaultfont{\@declarecontent}\par
+		\vspace*{1cm}
+		{\song\xiaosi
+			\@authorsigncap \makebox[2.5cm][s]{}
+			\@signdatecap \makebox[2cm][s]{} 年 \makebox[1cm][s]{} 月 \makebox[1cm][s]{} 日
+		}
+		\vspace{0.6\baselineskip}
+		\begin{center}\hei\xiaoer{\@authorizationtitle}\end{center}\par
+		{
+			\vspace{1.2\baselineskip}
+			\song\defaultfont{\@authorizationcontent}
+			\par \song\defaultfont{\@authorizationadd}
+		}
+		\vspace{2\baselineskip}
+		
+		{
+			\song\xiaosi
+			\@authorsigncap \makebox[3.5cm][s]{}  \@signdatecap \makebox[1.5cm][s]{} 年 \makebox[1cm][s]{} 月 \makebox[1cm][s]{} 日 \\
+			\indent
+			\@supervisorsigncap \makebox[3.5cm][s]{}  \@signdatecap \makebox[1.5cm][s]{} 年 \makebox[1cm][s]{} 月 \makebox[1cm][s]{} 日
+		}
+	}
+	
+	\clearpage
+}
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% 此处是中文摘要的格式设置，数据在cnabstract.tex %%%
+
+\makeatletter
+
+\long\def\cabstract#1{\long\def\@cabstract{#1}}\long\def\@cabstract{}
+\def\ckeywords#1{\def\@ckeywords{#1}}\def\@ckeywords{}
+
+% 定义makecnabstract以生成中文摘要
+\def\makecnabstract{
+	
+	\clearpage
+	\setcounter{page}{1} 		% 让摘要的起始页码为1。
+	\pagestyle{plain}		
+	%%%%%%%%%%%%%%%%%%%		中文摘要		%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{摘\quad 要}
+	\chapter*{\centering\erhao\song\bfseries\ 摘\qquad 要}	% 摘要标题，宋体加粗二号
+	\song\defaultfont
+	\vspace{\baselineskip} 										% 空两行
+	\vspace{\baselineskip}
+	\@cabstract													% 摘要正文
+	\vspace{\baselineskip}
+	
+	%\hangafter=1\hangindent=52.3pt\noindent   %如果取消该行注释，关键词换行时将会自动缩进
+	\noindent
+	{\song\xiaosi 关键词： \@ckeywords}		% modified by Jon, 关键词，宋体小四
+	
+	\clearpage
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% 此处是英文摘要的格式设置，数据在enabstract.tex %%%
+\makeatletter
+
+\long\def\enabstract#1{\long\def\@enabstract{#1}}\long\def\@enabstract{}
+\def\enkeywords#1{\def\@enkeywords{#1}}\def\@enkeywords{}
+\def\enpageheader#1{\def\@enpageheader{#1}}\def\@enpageheader{}
+
+% 定义makeenabstract以生成英文摘要
+\def\makeenabstract{
+	
+	\clearpage
+	
+	% 使用fancy来设置页眉页脚，自定义了新的格式——englishAbstract
+	\fancypagestyle{englishAbstract}{
+		\fancyhead[C]{\wuhao \@enpageheader}		% 使用英文论文名称作为页眉
+		\fancyfoot[C]{\song\wuhao ~\thepage~}
+	}
+
+	\pagestyle{englishAbstract}{}					% 应用englishAbstract
+	
+	\addcontentsline{toc}{chapter}{Abstract}
+	\chapter*{\centering\erhao \bf{Abstract}}		% 标题，二号
+	\thispagestyle{englishAbstract}{}				% 应用englishAbstract
+	\vspace{\baselineskip} 							% 空两行
+	\vspace{\baselineskip}
+	
+	\@enabstract									% 英文摘要正文
+	\vspace{\baselineskip}
+	
+	%\hangafter=1\hangindent=60pt\noindent  %如果取消该行注释，KEY WORDS换行时将会自动缩进
+	\noindent
+	{\xiaosi\textbf{Key Words:} \@enkeywords}		% 英文关键字
+	
+	\clearpage
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%
