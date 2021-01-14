@@ -2,7 +2,7 @@
 % !TEX program = pdflatex
 \documentclass[a4paper,12pt,openany,twoside]{book}
 
-% 当目录多余1页时，使用\thispagestyle{empty}和\pagestyle{empty}，都无法完全清除目录的页眉页脚格式，需要使用到下面的\AtBeginDocument{}代码
+% 当目录多于1页时，使用\thispagestyle{empty}和\pagestyle{empty}，都无法完全清除目录的页眉页脚格式，需要使用到下面的\AtBeginDocument{}代码
 \AtBeginDocument{
 	\addtocontents{toc}{\protect\thispagestyle{empty}}%
 	\addtocontents{lof}{\protect\thispagestyle{empty}}%
