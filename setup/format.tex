@@ -144,7 +144,7 @@
 \makeatletter
 \long\def\@makecaption#1#2{%
    \vskip\abovecaptionskip
-   \sbox\@tempboxa{\centering\wuhao\song{#1~~#2} }%
+   \sbox\@tempboxa{\centering\wuhao\song{#1~~#2} }	% 图表标题字体格式
    \ifdim \wd\@tempboxa >\hsize
      \centering\wuhao\song{#1~~#2} \par
    \else
@@ -155,6 +155,7 @@
 \makeatother
 \captiondelim{~~~~} %用来控制longtable表头分隔符
 
+\BeforeBeginEnvironment{tabular}{\wuhao}	% 表格内文字字体格式
 
 
 %%%%%%%%%% Theorem Environment %%%%%%%%%%%%%%%%%
