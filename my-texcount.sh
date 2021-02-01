@@ -1,5 +1,5 @@
 #!/bin/bash
-# 使用latex自带的texcount程序来统计文章字符数，运行方法是 sh my-texcount.sh
+# 使用latex自带的texcount程序来统计文章字符数，运行方法是 ./my-texcount.sh
 # 在windows上，可以使用git Bash运行shell脚本
 
 # 排除计数的文件：excludeFile
@@ -34,3 +34,5 @@ done
 # 使用texcount统计这些文件中的字符
 texcount $totalStr
 
+read -s -n1 -p "Press any key to continue ..."
+echo ""
