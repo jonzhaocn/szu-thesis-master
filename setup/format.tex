@@ -156,7 +156,15 @@
 \captiondelim{~~~~} %用来控制longtable表头分隔符
 
 \BeforeBeginEnvironment{tabular}{\wuhao}	% 表格内文字字体格式
+\BeforeBeginEnvironment{table}{
+	\setlength{\abovecaptionskip}{-5pt}	% 表格标题上方的空白
+	\setlength{\belowcaptionskip}{5pt} % 标题下方的空白
+}
 
+\BeforeBeginEnvironment{figure}{
+	\setlength{\abovecaptionskip}{-5pt}	% 图片标题上方的空白
+	\setlength{\belowcaptionskip}{0pt} % 标题下方的空白
+}
 
 %%%%%%%%%% Theorem Environment %%%%%%%%%%%%%%%%%
 \theoremstyle{plain}
