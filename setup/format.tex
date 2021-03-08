@@ -427,13 +427,12 @@
 	\chapter*{\centering\erhao\song\bfseries\ 摘\qquad 要}	% 摘要标题，宋体加粗二号
 	\song\defaultfont
 	\vspace{\baselineskip} 										% 空两行
-	\vspace{\baselineskip}
 	\@cabstract													% 摘要正文
 	\vspace{\baselineskip}
 	
 	%\hangafter=1\hangindent=52.3pt\noindent   %如果取消该行注释，关键词换行时将会自动缩进
-	\noindent
-	{\song\xiaosi 关键词： \@ckeywords}		% modified by Jon, 关键词，宋体小四
+	%\noindent
+	{\xiaosi\song\textbf{关键词:} \@ckeywords}	% modified by Jon, 关键词，宋体小四
 	
 	\clearpage
 }
@@ -466,13 +465,12 @@
 	\chapter*{\centering\erhao \bf{Abstract}}		% 标题，二号
 	\thispagestyle{englishAbstract}{}				% 应用englishAbstract
 	\vspace{\baselineskip} 							% 空两行
-	\vspace{\baselineskip}
 	
 	\@enabstract									% 英文摘要正文
 	\vspace{\baselineskip}
 	
 	%\hangafter=1\hangindent=60pt\noindent  %如果取消该行注释，KEY WORDS换行时将会自动缩进
-	\noindent
+	%\noindent
 	{\xiaosi\textbf{Key Words:} \@enkeywords}		% 英文关键字
 	
 	\clearpage
