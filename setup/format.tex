@@ -263,8 +263,8 @@
 
 \fancypagestyle{plain}{% 设置页页眉页脚的字体
 	\fancyhf{}%
-	\fancyhead[CO]{\song\wuhao \@ctitle}		% 奇数页的页眉标题也使用@ctitle
-	\fancyhead[CE]{\song\wuhao \@ctitle}
+	\fancyhead[CO]{\song\wuhao \@cnpageheader}		% 奇数页的页眉标题也使用@cnpageheader
+	\fancyhead[CE]{\song\wuhao \@cnpageheader}
 	\fancyfoot[C]{\song\wuhao ~\thepage~} 		%首页页脚格式
 }
 
@@ -278,7 +278,6 @@
 \makeatletter
 
 \def\thesisTitle#1{\def\@thesisTitle{#1}}\def\@thesisTitle{}
-\def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
 \def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
 \def\majorName#1{\def\@majorName{#1}}\def\@majorName{}
 \def\authorName#1{\def\@authorName{#1}}\def\@authorName{}
@@ -295,8 +294,7 @@
 \def\makecover{
 	
 	\clearpage
-	
-	\pdfbookmark[-1]{封面}{ctitle} % pdf文件的书签
+	\pdfbookmark[-1]{封面}{thesisTitle} % pdf文件的书签
 	
 	\begin{titlepage}
 		\begin{center}
@@ -366,9 +364,6 @@
 	
 	\clearpage
 	
-	% 如果需要上传稿包含版权页，取消这部分内容注释
-	%\includepdf{data/Copyright.pdf}
-	
 	
 	% 下面为原创性声明页面的格式设置，如果引入pdf文件作为原创性声明，则将此部分代码注释掉
 	\pagestyle{fancy}
@@ -415,6 +410,7 @@
 
 \long\def\cabstract#1{\long\def\@cabstract{#1}}\long\def\@cabstract{}
 \def\ckeywords#1{\def\@ckeywords{#1}}\def\@ckeywords{}
+\def\cnpageheader#1{\def\@cnpageheader{#1}}\def\@cnpageheader{}
 
 % 定义makecnabstract以生成中文摘要
 \def\makecnabstract{

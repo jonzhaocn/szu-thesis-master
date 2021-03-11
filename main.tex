@@ -19,7 +19,11 @@
 
 \clearpage
 \input{data/cover}							% 封面
-\input{data/copyright}						% 诚信说明
+
+% \input{data/copyright} 与 \includepdf{data/copyright.pdf} 二选一
+%\input{data/copyright}                        % 诚信说明
+\includepdf{data/copyright.pdf}             % 使用pdf文件替换原有的诚信声明data/copyright
+
 \input{data/cnabstract}						% 中文摘要
 \input{data/enabstract}						% 英文摘要
 
