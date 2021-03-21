@@ -141,12 +141,13 @@
 
 
 %% 定制浮动图形和表格标题样式
+% \fontsize{10.5pt}{10.5pt}设置字体大小，\linespread{1.2}设置行间距
 \makeatletter
 \long\def\@makecaption#1#2{%
    \vskip\abovecaptionskip
-   \sbox\@tempboxa{\centering\wuhao\song{#1~~#2} }	% 图表标题字体格式
+   \sbox\@tempboxa{\centering\fontsize{10.5pt}{10.5pt}\linespread{1.2}\selectfont{}\song{#1~~#2} }	% 图表标题字体格式
    \ifdim \wd\@tempboxa >\hsize
-     \centering\wuhao\song{#1~~#2} \par
+     \centering\fontsize{10.5pt}{10.5pt}\linespread{1.2}\selectfont{}\song{#1~~#2} \par
    \else
      \global \@minipagefalse
      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
