@@ -1,6 +1,7 @@
 %%%%%%%%%% !TEX program = pdflatex %%%%%%%%%%
 % !TEX program = pdflatex
-\documentclass[a4paper,12pt,openany,twoside]{book}
+
+\documentclass[a4paper,12pt,openany,twoside,fontset=windows]{book} % mac下解决pdflatex报错: 'mac' unavailble的问题: 设置为windows fontset
 
 % 当目录多于1页时，使用\thispagestyle{empty}和\pagestyle{empty}，都无法完全清除目录的页眉页脚格式，需要使用到下面的\AtBeginDocument{}代码
 \AtBeginDocument{
